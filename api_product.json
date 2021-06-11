@@ -1,0 +1,32 @@
+[
+    {
+        "product" :
+        {
+            "id" : "",
+            "product_type_id" : "",
+            "product_brand_id" : "",
+            "model" : "",
+            "year_model" : "",
+            "serial" : "",
+            "wheel_size" : "",
+            "color_id" : "",
+            "description" : "",
+
+            "images" :
+            {
+
+            },
+
+            "acquired" :
+            {
+                "provider_id" : "",
+                "date" : "",
+                "invoice" : "",
+                "amount" : ""
+            },
+
+            "last_maintenance" : "",
+            "due_maintenance" : ""
+        }
+    }
+]
