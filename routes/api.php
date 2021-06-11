@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post( 'login', [AuthController::class, 'login'] );
+
+/*
+ * Protected routes
+*/
+
+// Products
+Route::apiResource( 'products', ProductController::class )->middleware( 'auth:api' );

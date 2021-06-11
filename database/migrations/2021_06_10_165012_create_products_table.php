@@ -22,10 +22,10 @@ class CreateProductsTable extends Migration
             $table->integer( 'product_type_id' )->unsigned();
             $table->integer( 'product_brand_id' )->unsigned();
             $table->string( 'model' );
-            $table->year( 'year_model' );
+            $table->year( 'year_model' )->nullable();
             $table->string( 'serial' );
             $table->string( 'wheel_size' );
-            $table->integer( 'color_id' )->unsigned();
+            $table->integer( 'color_id' )->unsigned()->nullable();
             $table->string( 'description', 512 );
 
             $table->json( 'images' )->nullable();

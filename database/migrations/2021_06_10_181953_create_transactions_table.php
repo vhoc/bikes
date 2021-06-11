@@ -29,8 +29,8 @@ class CreateTransactionsTable extends Migration
             $table->dateTime( 'rental_end' )->nullable();
             $table->decimal( 'transaction_amount', $precision = 13, $scale = 4 )->nullable();
             $table->string( 'unregistered_user_firstname', 64 )->nullable();
-            $table->string( 'unregisteded_user_lastname', 64 )->nullable();
-            $table->string( 'unregisteded_user_phone',11 )->nullable();
+            $table->string( 'unregistered_user_lastname', 64 )->nullable();
+            $table->string( 'unregistered_user_phone', 13 )->nullable();
 
 
             $table->timestamps();
