@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductTypeController;
+use App\Http\Controllers\ProductBrandsController;
+use App\Http\Controllers\ProviderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +31,11 @@ Route::post( 'login', [AuthController::class, 'login'] );
 
 // Products
 Route::apiResource( 'products', ProductController::class )->middleware( 'auth:api' );
+
+// Product Types
+Route::apiResource( 'product_types', ProductTypeController::class )->middleware( 'auth:api' );
+
+// Product Brands
+Route::apiResource( 'product_brands', ProductBrandsController::class )->middleware( 'auth:api' );
+
+Route::apiResource( 'providers', ProviderController::class )->middleware( 'auth:api' );

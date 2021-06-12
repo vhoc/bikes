@@ -44,7 +44,7 @@ class ProductController extends Controller
         $newProduct->images             = $request->images;
         $newProduct->acquired           = $request->acquired;
         $newProduct->last_maintenance   = $request->last_maintenance;
-        $newProduct->due_maintenance   = $request->due_maintenance;
+        $newProduct->due_maintenance    = $request->due_maintenance;
 
         if( $newProduct->save() )
         {
@@ -80,19 +80,56 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(StoreProductRequest $request, Product $product)
     {
-        //
+        $validated = $request->validated();
+
+        $product->product_type_id    = $request->product_type_id;
+        $product->product_brand_id   = $request->product_brand_id;
+        $product->model              = $request->model;
+        $product->year_model         = $request->year_model;
+        $product->serial             = $request->serial;
+        $product->wheel_size         = $request->wheel_size;
+        $product->color_id           = $request->color_id;
+        $product->description        = $request->description;
+        $product->images             = $request->images;
+        $product->acquired           = $request->acquired;
+        $product->last_maintenance   = $request->last_maintenance;
+        $product->due_maintenance    = $request->due_maintenance;
+
+        if( $product->save() )
+        {
+            return response( [
+                'message' => 'Product updated successfully',
+                'code' => 200
+            ], 200 );
+        }
+        return response( [
+            'message' => 'Error updating product.',
+            'code' => 400
+        ] );
     }
 
     /**
      * Remove the specified resource from storage.
+     * If the resource is soft-deleted, this method will restore it.
      *
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
     {
-        //
+        if( $product->delete() )
+        {
+            return response( [
+                'message' => 'Product deleted successfully',
+                'code' => 200
+            ], 200 );
+        }
+        return response( [
+            'message' => 'Error deleting product.',
+            'code' => 400
+        ] );
     }
+
 }
